@@ -1,5 +1,5 @@
-from project_name.base import NAME
+from abstract_data_layer.base import NAME
 
 
 def test_base():
-    assert NAME == "project_name"
+    assert NAME == "abstract_data_layer"
