@@ -12,6 +12,31 @@ If you want to replace this with a Flask application run:
 
 and then choose `flask` as template.
 """
+from abc import abstractmethod
+from datetime import datetime
+from typing import TypeVar, Generic, Protocol
 
-# example constant variable
-NAME = "abstract_data_layer"
+ID = TypeVar('ID')
+T = TypeVar('T')
+
+class Entity(Protocol):
+    createDate: datetime
+    updateDate: datetime
+
+class CRUD(Generic[T, ID]):
+
+    @abstractmethod
+    def get(self, target: ID) -> T:
+        pass
+
+    @abstractmethod
+    def delete(self, target: ID) -> T:
+        pass
+
+    @abstractmethod
+    def create(self, obj: T) -> T:
+        pass
+
+    @abstractmethod
+    def update(self, obj: T) -> T:
+        pass
