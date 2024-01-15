@@ -13,5 +13,4 @@ class Category(Generic[ID]):
 
 
 class CategoryRepository(CRUD[Category[ID], ID], ABC):
-    def __init__(self):
-        pass
+    pass

@@ -18,13 +18,14 @@ from enum import Enum
 from typing import TypeVar, Generic, Protocol, List
 
 ID = TypeVar('ID')
-T = TypeVar('T')
 
+class Entity(Generic[ID]):
+    def __init__(self, id: ID, create_date: datetime = datetime.now(), update_date: datetime = None):
+        self.id = id
+        self.create_date = create_date
+        self.update_date = update_date
 
-class Entity(Protocol):
-    createDate: datetime
-    updateDate: datetime
-
+T = TypeVar('T', bound=Entity)
 
 class CRUD(Generic[T, ID]):
 
@@ -43,7 +44,6 @@ class CRUD(Generic[T, ID]):
     @abstractmethod
     def update(self, obj: T) -> T:
         pass
-
 
 class SortOrder(Enum):
     ASC = 1
