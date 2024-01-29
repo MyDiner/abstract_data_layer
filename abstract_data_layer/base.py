@@ -17,6 +17,10 @@ from datetime import datetime
 from enum import Enum
 from typing import TypeVar, Generic, Protocol, List
 
+class EntityNotFoundError(Exception):
+    def __init__(self):
+        pass
+
 ID = TypeVar('ID')
 
 class Entity(Generic[ID]):
